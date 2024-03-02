@@ -49,7 +49,7 @@ class _ResultPageState extends State<ResultPage> {
                                 : trueCount != widget.data[0].length
                                     ? (widget.data[0].length - trueCount)
                                         .toString()
-                                    : errorCount.toString() ,
+                                    : errorCount.toString(),
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 25),
                           ),
@@ -71,7 +71,7 @@ class _ResultPageState extends State<ResultPage> {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
+                child: Wrap(
                   // textBaseline: ,
                   textDirection: TextDirection.rtl,
                   children: textColor,
@@ -173,6 +173,5 @@ class _ResultPageState extends State<ResultPage> {
         }
       }
     }
-    // correctedText = textColor.reversed.toList();
   }
 }
