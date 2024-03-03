@@ -131,6 +131,7 @@ class _ResultPageState extends State<ResultPage> {
 
   _comparison() {
     if (widget.wordSpoken.length > widget.data[0].length) {
+      //! first For -----------------------------------------
       for (var i = 0; i < widget.data[0].length; i++) {
         if (widget.wordSpoken[i] == widget.data[0][i]) {
           trueCount++;
@@ -153,8 +154,8 @@ class _ResultPageState extends State<ResultPage> {
             ),
           );
         } else {
-          if (widget.wordSpoken[i] == widget.data[0][i + 1] &&
-              i + 1 < widget.wordSpoken.length) {
+          if (i + 1 < widget.data[0].length &&
+              widget.wordSpoken[i] == widget.data[0][i + 1]) {
             errorCount += 2;
             correctErrorText.add(
               Text(
@@ -185,8 +186,8 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
             );
-          } else if (widget.wordSpoken[i] == widget.data[0][i + 2] &&
-              i + 2 < widget.wordSpoken.length) {
+          } else if (i + 2 < widget.data[0].length &&
+              widget.wordSpoken[i] == widget.data[0][i + 2]) {
             errorCount += 3;
             correctErrorText.add(
               Text(
@@ -293,7 +294,7 @@ class _ResultPageState extends State<ResultPage> {
             );
           }
         }
-      }
+      } //! first For -----------------------------------------
       for (var i = widget.data[0].length; i < widget.wordSpoken.length; i++) {
         errorCount++;
         correctErrorText.add(
@@ -310,7 +311,7 @@ class _ResultPageState extends State<ResultPage> {
           Text(
             "${widget.wordSpoken[i]} ",
             style: TextStyle(
-              color: errorColor,
+              color: correctColor,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
@@ -373,8 +374,8 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
             );
-          } else if (widget.wordSpoken[i] == widget.data[0][i + 2] &&
-              i + 2 < widget.wordSpoken.length) {
+          } else if (i + 2 < widget.wordSpoken.length &&
+              widget.wordSpoken[i] == widget.data[0][i + 2]) {
             errorCount += 3;
             correctErrorText.add(
               Text(
@@ -436,7 +437,7 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
             );
-          } else if (widget.wordSpoken[i] == widget.data[0][i - 2] && i > 1) {
+          } else if (i > 1 && widget.wordSpoken[i] == widget.data[0][i - 2]) {
             errorCount += 3;
             correctErrorText.add(
               Text(
@@ -481,6 +482,18 @@ class _ResultPageState extends State<ResultPage> {
             );
           }
         }
+      }
+      for (var i = widget.wordSpoken.length; i < widget.data[0].length; i++) {
+        correctErrorText.add(
+          Text(
+            "${widget.data[0][i]} ",
+            style: TextStyle(
+              color: errorColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        );
       }
     } else {
       for (var i = 0; i < widget.data[0].length; i++) {
@@ -601,7 +614,7 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
             );
-          } else if (widget.wordSpoken[i] == widget.data[0][i - 2] && i > 1) {
+          } else if (i > 1 && widget.wordSpoken[i] == widget.data[0][i - 2]) {
             errorCount += 3;
             correctErrorText.add(
               Text(
