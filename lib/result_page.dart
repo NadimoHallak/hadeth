@@ -295,7 +295,7 @@ class _ResultPageState extends State<ResultPage> {
           }
         }
       } //! first For -----------------------------------------
-      for (var i = widget.data[0].length; i < widget.wordSpoken.length; i++) {
+      for (var i = correctText.length; i < widget.data[0].length; i++) {
         errorCount++;
         correctErrorText.add(
           Text(
